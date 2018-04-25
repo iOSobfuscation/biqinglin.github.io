@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="biqinglin&#39;s blog">
 <meta property="og:description" content="队列（queue）队列是一种特殊的、操作受限制的线性表，因为队列只允许从头部（队头）进行删除操作，从尾部（队尾）进行插入操作。 队列可以保证元素存入和取出的顺序是先进先出(first input first output - FIFO)的。 下面使用Swift语言实现一个简单的例子：">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-04-25T02:55:51.019Z">
+<meta property="og:updated_time" content="2018-04-25T02:58:00.548Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift实现一个简单的队列及优化">
 <meta name="twitter:description" content="队列（queue）队列是一种特殊的、操作受限制的线性表，因为队列只允许从头部（队头）进行删除操作，从尾部（队尾）进行插入操作。 队列可以保证元素存入和取出的顺序是先进先出(first input first output - FIFO)的。 下面使用Swift语言实现一个简单的例子：">
@@ -193,6 +193,7 @@
 <p>可以看到，经过优化的出队列操作耗时要比直接出队列的操作要短的许多，都不是一个量级上的。这是最直观的区别了吧。当然了，这只是一个非常简单的优化队列的方式，而且，这也是其中最简单的一种队列实现方式。</p>
 <p>事实上，队列还有很多种其他的实现方式，例如可以使用链表、环形缓冲区或是堆来实现。</p>
 <p>队列有很多变体，包括双端队列，一个两端都可以出队和入队的队列；优先队列，一个有序的队列，最重要的元素排在队首。</p>
+<p>ps:调试最好使用工程文件，不要用playground</p>
 
       
 
@@ -416,15 +417,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">栈</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">队列</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">APP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">栈</a>
               </li>
             
             <div class="clearfix"></div>
