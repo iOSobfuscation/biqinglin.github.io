@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Swift实现一个简单的栈 | biqinglin&#39;s blog</title>
+  <title>Swift实现一个简单的队列及优化 | biqinglin&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="栈（stack）又名堆栈，它是一种运算受限的线性表。因为栈只允许从栈顶压入(push)元素；从栈顶弹出(pop)元素。 栈可以保证元素存入和取出的顺序是后进先出(last-in first-out, LIFO)的。 下面使用Swift语言实现一个简单的例子：">
-<meta name="keywords" content="iOS,Swift,栈">
+  <meta name="description" content="队列（queue）队列是一种特殊的、操作受限制的线性表，因为队列只允许从头部（队头）进行删除操作，从尾部（队尾）进行插入操作。 队列可以保证元素存入和取出的顺序是先进先出(first input first output - FIFO)的。 下面使用Swift语言实现一个简单的例子：">
+<meta name="keywords" content="iOS,Swift,队列">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Swift实现一个简单的栈">
-<meta property="og:url" content="http://yoursite.com/2018/04/24/Swift实现一个简单的栈/index.html">
+<meta property="og:title" content="Swift实现一个简单的队列及优化">
+<meta property="og:url" content="http://yoursite.com/2018/04/25/Swift实现一个简单的队列及优化/index.html">
 <meta property="og:site_name" content="biqinglin&#39;s blog">
-<meta property="og:description" content="栈（stack）又名堆栈，它是一种运算受限的线性表。因为栈只允许从栈顶压入(push)元素；从栈顶弹出(pop)元素。 栈可以保证元素存入和取出的顺序是后进先出(last-in first-out, LIFO)的。 下面使用Swift语言实现一个简单的例子：">
+<meta property="og:description" content="队列（queue）队列是一种特殊的、操作受限制的线性表，因为队列只允许从头部（队头）进行删除操作，从尾部（队尾）进行插入操作。 队列可以保证元素存入和取出的顺序是先进先出(first input first output - FIFO)的。 下面使用Swift语言实现一个简单的例子：">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-04-24T10:15:54.311Z">
+<meta property="og:updated_time" content="2018-04-25T02:55:51.019Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Swift实现一个简单的栈">
-<meta name="twitter:description" content="栈（stack）又名堆栈，它是一种运算受限的线性表。因为栈只允许从栈顶压入(push)元素；从栈顶弹出(pop)元素。 栈可以保证元素存入和取出的顺序是后进先出(last-in first-out, LIFO)的。 下面使用Swift语言实现一个简单的例子：">
+<meta name="twitter:title" content="Swift实现一个简单的队列及优化">
+<meta name="twitter:description" content="队列（queue）队列是一种特殊的、操作受限制的线性表，因为队列只允许从头部（队头）进行删除操作，从尾部（队尾）进行插入操作。 队列可以保证元素存入和取出的顺序是先进先出(first input first output - FIFO)的。 下面使用Swift语言实现一个简单的例子：">
   
     <link rel="alternative" href="/atom.xml" title="biqinglin&#39;s blog" type="application/atom+xml">
   
@@ -143,51 +143,56 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Swift实现一个简单的栈" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Swift实现一个简单的队列及优化" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Swift实现一个简单的栈
+      Swift实现一个简单的队列及优化
     </h1>
   
 
         
-        <a href="/2018/04/24/Swift实现一个简单的栈/" class="archive-article-date">
-  	<time datetime="2018-04-24T04:22:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-24</time>
+        <a href="/2018/04/25/Swift实现一个简单的队列及优化/" class="archive-article-date">
+  	<time datetime="2018-04-25T02:10:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-25</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>栈（stack）又名堆栈，它是一种运算受限的线性表。因为栈只允许从栈顶压入(push)元素；从栈顶弹出(pop)元素。</p>
-<p>栈可以保证元素存入和取出的顺序是后进先出(last-in first-out, LIFO)的。</p>
-<p>下面使用Swift语言实现一个简单的例子：<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">// 栈   先进后出</span><br><span class="line">struct stack &lt;T&gt; &#123;</span><br><span class="line"></span><br><span class="line">fileprivate var array = [T]()</span><br><span class="line"></span><br><span class="line">public var isEmpty : Bool &#123;</span><br><span class="line">    return array.isEmpty</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 压栈</span><br><span class="line">public mutating func push(element : T) &#123;</span><br><span class="line">    array.append(element)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 出栈</span><br><span class="line">public mutating func pop() &#123;</span><br><span class="line"></span><br><span class="line">    if !isEmpty &#123;</span><br><span class="line">        array.popLast()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>使用自带数组简单的实现了下，push即在数组中添加新元素，pop即将数组总最末尾的元素取出（如果有的话）</p>
+        <p>队列（queue）队列是一种特殊的、操作受限制的线性表，因为队列只允许从头部（队头）进行删除操作，从尾部（队尾）进行插入操作。</p>
+<p>队列可以保证元素存入和取出的顺序是先进先出(first input first output - FIFO)的。</p>
+<p>下面使用Swift语言实现一个简单的例子：<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">// 队列   先进先出</span><br><span class="line">struct queue &lt;T&gt; &#123;</span><br><span class="line"></span><br><span class="line">fileprivate var array = [T?]()</span><br><span class="line"></span><br><span class="line">public var isEmpty : Bool &#123;</span><br><span class="line">    return count == 0</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public var count : Int &#123;</span><br><span class="line">    return array.count</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 进队列</span><br><span class="line">public mutating func enQueue(element : T) &#123;</span><br><span class="line"></span><br><span class="line">    array.append(element)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 出队列</span><br><span class="line">public mutating func outQueue() &#123;</span><br><span class="line"></span><br><span class="line">    if !isEmpty &#123;</span><br><span class="line">        array.removeFirst()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>使用自带数组简单的实现了下，enQueue即在数组中添加新元素，outQueue即将数组最首端的元素取出（如果有的话）</p>
 <h4 id="简单的使用："><a href="#简单的使用：" class="headerlink" title="简单的使用："></a>简单的使用：</h4><ul>
 <li><p>初始化一个结构体</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var stack = stack&lt;Int&gt;()</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var q0 = queue&lt;Int&gt;()</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>进行push操作，插入一个元素1</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stack.push(element: 1)</span><br></pre></td></tr></table></figure>
+<li><p>进行enQueue操作，比较简单，这里不做分步操作，直接来</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">q0.enQueue(element: 1)</span><br><span class="line">print(q0)</span><br><span class="line">q0.enQueue(element: 2)</span><br><span class="line">q0.enQueue(element: 3)</span><br><span class="line">print(q0)</span><br><span class="line">q0.outQueue()</span><br><span class="line">print(q0)</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>此时栈中元素为一个，就是一个1 如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stack&lt;Int&gt;(array: [1])</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>我们接着push2、3 此时的栈是这样的，可以看到，最先push的元素在前面</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stack&lt;Int&gt;(array: [1, 2, 3])</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>我们来pop一次试试，再打印下stack看看有什么变化，3被取出，留下1、2，说明“先进后出”。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stack.pop()</span><br></pre></td></tr></table></figure>
+<li><p>通过打印q0可以看到，进队列的数据依次排开，当执行依次出队列操作时，最先进去的数据”1”被删除，剩下2、3 。这就是先进先出原则。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">queue&lt;Int&gt;(array: [Optional(1)], index: 0, max: 1000)</span><br><span class="line">queue&lt;Int&gt;(array: [Optional(1), Optional(2), Optional(3)], index: 0, max: 1000)</span><br><span class="line">queue&lt;Int&gt;(array: [Optional(2), Optional(3)], index: 0, max: 1000)</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stack&lt;Int&gt;(array: [1, 2])</span><br></pre></td></tr></table></figure>
-<ul>
-<li>压栈操作是将新元素压入数组的尾部，而不是头部。在数组的头部插入元素是一个很耗时的操作，它的时间复杂度为 O(n)，因为需要将现有元素往后移位为新元素腾出空间。而在尾部插入元素的时间复杂度为 O(1)；无论数组有多少元素，这个操作所消耗的时间都是一个常量。<br>关于栈的有趣知识：每次你调用函数或方法，CPU 都会将函数返回地址压入到运行栈中。当这个函数执行结束的时候，CPU 将返回地址从栈中取出，并据此返回到函数被调用的位置。所以，如果不断地调用太多的函数(例如死递归函数)，就会得到一个所谓的“栈溢出(stack overflow)” 错误，因为 CPU 运行栈没有空间了。</li>
-</ul>
+<h4 id="简单的优化："><a href="#简单的优化：" class="headerlink" title="简单的优化："></a>简单的优化：</h4><p>&ensp;&ensp;&ensp;&ensp;上面的进队列操作时间复杂度为O(1)，因为插入数据总是在数组尾部进行，跟当前数据中有多少个元素是没有关系的，在Swift内部实现中，在数组中添加元素时，数组末尾都会留有一些已经申请好的内存空间（如示例代码中的“*”）供我们使用（这里排除当前可用空间不足，重新调整数组大小来获取更多的可用空间的情况，但是这个过程并不是频繁发生，所以这里说的时间复杂度可以近似认为是O(1)），将元素插入这些已经备好的未使用内存中仅仅是简单的拷贝内存的过程，因此花费时间是固定的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[ &quot;1&quot;, &quot;2&quot;, &quot;3&quot;, *, * ]</span><br></pre></td></tr></table></figure></p>
+<p>插入数据4<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[ &quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, * ]</span><br></pre></td></tr></table></figure></p>
+<p>&ensp;&ensp;&ensp;&ensp;但是出队列就不一样了，遵循“先进先出”的原则，因此出队列是将数组首元素剔除，这就会导致后面的所有元素都需要向前移动一位，这个过程是很消耗时间的，因此复杂度为O(n)，上面的例子没有做优化，试试操作10000条数据就知道了。</p>
+<p>&ensp;&ensp;&ensp;&ensp;所以我们需要做一些简单的优化，既然耗费时间的过程是将元素前移，那么可不可以在出队列的时候保证结果不变，但是不执行前移操作呢？</p>
+<p>&ensp;&ensp;&ensp;&ensp;当然是可以的，只需要给出队列的元素设置占位元素（这里使用nil），比如下面的例子，现在进行一次出队列操作，之前的做法结果就是2、3、4都前移一位<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[ &quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, * ]</span><br><span class="line"></span><br><span class="line">[ &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, *, * ]</span><br></pre></td></tr></table></figure></p>
+<p>&ensp;&ensp;&ensp;&ensp;那现在我们在移除1的同时用nil作为占位元素放在首位呢？就会变成这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[ nil, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, * ]</span><br></pre></td></tr></table></figure></p>
+<p>&ensp;&ensp;&ensp;&ensp;搞清楚了原理，那么再来修改下outQueue这个方法，同时因为这些占位元素也是数组的一部分，但是它们实际上不能算作有效数据，因此在计算当前数据的count的时候，是需要减去这些占位元素的，这里也要将上面的属性count修改下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// 添加一个index变量，来记录当前出队列的元素索引 初始值为0</span><br><span class="line">public var index = 0</span><br><span class="line"></span><br><span class="line">public var count : Int &#123;</span><br><span class="line">    return array.count - index</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public mutating func outQuque_op() &#123;</span><br><span class="line"></span><br><span class="line">    guard count &gt; 0 else &#123;return&#125;</span><br><span class="line">    array[index] = nil</span><br><span class="line">    index += 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>&ensp;&ensp;&ensp;&ensp;出队列还是要判断当前数组是不是空的，每次出队列都将改元素用nil替换，同时index需要自增一，这里发现什么问题没？没错，这样搞会造成index无限大了，也就是数组可能变成这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[ nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, &quot;14&quot;, &quot;15&quot;, &quot;16&quot;, * ]</span><br></pre></td></tr></table></figure></p>
+<p>&ensp;&ensp;&ensp;&ensp;这还得了。。。不得爆炸啊！所以我们需要按照某些规则定期去除这些占位元素，这里我就简单按照占位元素找过某个值的规则来操作，这里我们再来定义一个变量 max 表示当index的值（也就是当前已经有多少个占位元素了）超过max<br>的时候就将前面index个占位元素清除（这个操作会让元素前移，因此这个规则不要太简单了。。。比如你超过10个就清除，那这样跟没有优化区别大吗。。。我觉得不大）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// 定义当头部占位元素超过max的时候就清理掉</span><br><span class="line">public let max = 100</span><br><span class="line"></span><br><span class="line">public mutating func outQuque_op() &#123;</span><br><span class="line"></span><br><span class="line">    guard count &gt; 0 else &#123;return&#125;</span><br><span class="line">    array[index] = nil</span><br><span class="line">    index += 1</span><br><span class="line">    if index &gt; max &#123;</span><br><span class="line">        array.removeFirst(index)</span><br><span class="line">        index = 0</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>&ensp;&ensp;&ensp;&ensp;优化完成，我们来用一个例子看看这两种出队列的不同，下面贴出完整代码，以及测试用例代码，测试使用10万条数据进行操作：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">// 队列   先进先出</span><br><span class="line">struct queue &lt;T&gt; &#123;</span><br><span class="line"></span><br><span class="line">fileprivate var array = [T?]()</span><br><span class="line">public var index = 0</span><br><span class="line">// 定义当头部占位元素超过max的时候就清理掉</span><br><span class="line">public let max = 1000</span><br><span class="line"></span><br><span class="line">public var isEmpty : Bool &#123;</span><br><span class="line">    return count == 0</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public var count : Int &#123;</span><br><span class="line">    return array.count - index</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 进队列</span><br><span class="line">public mutating func enQueue(element : T) &#123;</span><br><span class="line"></span><br><span class="line">    array.append(element)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 出队列  不做优化</span><br><span class="line">public mutating func outQueue() &#123;</span><br><span class="line"></span><br><span class="line">    if !isEmpty &#123;</span><br><span class="line">    array.removeFirst()</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 出队列  优化</span><br><span class="line">// 要定期清理掉头部的占位元素，不然数组会越来越大</span><br><span class="line">public mutating func outQuque_op() &#123;</span><br><span class="line"></span><br><span class="line">    guard count &gt; 0 else &#123;return&#125;</span><br><span class="line">    array[index] = nil</span><br><span class="line">    index += 1</span><br><span class="line">    if index &gt; max &#123;</span><br><span class="line">        array.removeFirst(index)</span><br><span class="line">        index = 0</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">let time0 = NSDate().timeIntervalSince1970 * 1000</span><br><span class="line">var q0 = queue&lt;Int&gt;()</span><br><span class="line">for i in 0...99999 &#123;</span><br><span class="line">    q0.enQueue(element: i)</span><br><span class="line">&#125;</span><br><span class="line">for _ in 0...99999 &#123;</span><br><span class="line">    q0.outQueue()</span><br><span class="line">&#125;</span><br><span class="line">let time1 = NSDate().timeIntervalSince1970 * 1000</span><br><span class="line">print(time1 - time0)</span><br><span class="line"></span><br><span class="line">var q1 = queue&lt;Int&gt;()</span><br><span class="line">for i in 0...99999 &#123;</span><br><span class="line">    q1.enQueue(element: i)</span><br><span class="line">&#125;</span><br><span class="line">for _ in 0...99999 &#123;</span><br><span class="line">    q1.outQuque_op()</span><br><span class="line">&#125;</span><br><span class="line">let time2 = NSDate().timeIntervalSince1970 * 1000</span><br><span class="line">print(time2 - time1)</span><br><span class="line">print((time2 - time1)-(time1 - time0))</span><br></pre></td></tr></table></figure>
+<p>时间戳打印<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2389.02099609375</span><br><span class="line">58.46875</span><br><span class="line">-2330.55224609375</span><br></pre></td></tr></table></figure></p>
+<p>可以看到，经过优化的出队列操作耗时要比直接出队列的操作要短的许多，都不是一个量级上的。这是最直观的区别了吧。当然了，这只是一个非常简单的优化队列的方式，而且，这也是其中最简单的一种队列实现方式。</p>
+<p>事实上，队列还有很多种其他的实现方式，例如可以使用链表、环形缓冲区或是堆来实现。</p>
+<p>队列有很多变体，包括双端队列，一个两端都可以出队和入队的队列；优先队列，一个有序的队列，最重要的元素排在队首。</p>
 
       
 
@@ -209,7 +214,7 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">栈</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">队列</a>
         		</li>
       		
 		</ul>
@@ -265,7 +270,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/04/24/Swift实现一个简单的栈/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/04/25/Swift实现一个简单的队列及优化/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -279,18 +284,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/04/25/Swift实现一个简单的队列及优化/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Swift实现一个简单的队列及优化
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/04/19/小私密/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">小私密 开发记录</div>
+    <a href="/2018/04/24/Swift实现一个简单的栈/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Swift实现一个简单的栈</div>
       <i class="icon-circle-right"></i>
     </a>
   
