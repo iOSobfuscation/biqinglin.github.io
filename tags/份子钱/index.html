@@ -6,20 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Swift实现一个简单的栈 | biqinglin&#39;s blog</title>
+  <title>Tag: 份子钱 | biqinglin&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="栈（stack）又名堆栈，它是一种运算受限的线性表。因为栈只允许从栈顶压入(push)元素；从栈顶弹出(pop)元素。 栈可以保证元素存入和取出的顺序是后进先出(last-in first-out, LIFO)的。 下面使用Swift语言实现一个简单的例子：">
-<meta name="keywords" content="iOS,Swift,栈">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Swift实现一个简单的栈">
-<meta property="og:url" content="http://yoursite.com/2018/04/24/Swift实现一个简单的栈/index.html">
+  <meta name="description" content="唧唧复唧唧">
+<meta name="keywords" content="iOS">
+<meta property="og:type" content="website">
+<meta property="og:title" content="biqinglin&#39;s blog">
+<meta property="og:url" content="http://yoursite.com/tags/份子钱/index.html">
 <meta property="og:site_name" content="biqinglin&#39;s blog">
-<meta property="og:description" content="栈（stack）又名堆栈，它是一种运算受限的线性表。因为栈只允许从栈顶压入(push)元素；从栈顶弹出(pop)元素。 栈可以保证元素存入和取出的顺序是后进先出(last-in first-out, LIFO)的。 下面使用Swift语言实现一个简单的例子：">
+<meta property="og:description" content="唧唧复唧唧">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-04-24T10:15:54.311Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Swift实现一个简单的栈">
-<meta name="twitter:description" content="栈（stack）又名堆栈，它是一种运算受限的线性表。因为栈只允许从栈顶压入(push)元素；从栈顶弹出(pop)元素。 栈可以保证元素存入和取出的顺序是后进先出(last-in first-out, LIFO)的。 下面使用Swift语言实现一个简单的例子：">
+<meta name="twitter:title" content="biqinglin&#39;s blog">
+<meta name="twitter:description" content="唧唧复唧唧">
   
     <link rel="alternative" href="/atom.xml" title="biqinglin&#39;s blog" type="application/atom+xml">
   
@@ -143,59 +142,36 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Swift实现一个简单的栈" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      Swift实现一个简单的栈
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2018" class="archive-year">2018</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2018/05/07/个人应用-份子记账/" class="archive-article-date">
+  	<time datetime="2018-05-07T02:43:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-07</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/05/07/个人应用-份子记账/">个人应用:份子记账</a>
     </h1>
   
 
-        
-        <a href="/2018/04/24/Swift实现一个简单的栈/" class="archive-article-date">
-  	<time datetime="2018-04-24T04:22:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>栈（stack）又名堆栈，它是一种运算受限的线性表。因为栈只允许从栈顶压入(push)元素；从栈顶弹出(pop)元素。</p>
-<p>栈可以保证元素存入和取出的顺序是后进先出(last-in first-out, LIFO)的。</p>
-<p>下面使用Swift语言实现一个简单的例子：<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">// 栈   先进后出</span><br><span class="line">struct stack &lt;T&gt; &#123;</span><br><span class="line"></span><br><span class="line">fileprivate var array = [T]()</span><br><span class="line"></span><br><span class="line">public var isEmpty : Bool &#123;</span><br><span class="line">    return array.isEmpty</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 压栈</span><br><span class="line">public mutating func push(element : T) &#123;</span><br><span class="line">    array.append(element)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 出栈</span><br><span class="line">public mutating func pop() &#123;</span><br><span class="line"></span><br><span class="line">    if !isEmpty &#123;</span><br><span class="line">        array.popLast()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>使用自带数组简单的实现了下，push即在数组中添加新元素，pop即将数组总最末尾的元素取出（如果有的话）</p>
-<h4 id="简单的使用："><a href="#简单的使用：" class="headerlink" title="简单的使用："></a>简单的使用：</h4><ul>
-<li><p>初始化一个结构体</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var stack = stack&lt;Int&gt;()</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>进行push操作，插入一个元素1</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stack.push(element: 1)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>此时栈中元素为一个，就是一个1 如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stack&lt;Int&gt;(array: [1])</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>我们接着push2、3 此时的栈是这样的，可以看到，最先push的元素在前面</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stack&lt;Int&gt;(array: [1, 2, 3])</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>我们来pop一次试试，再打印下stack看看有什么变化，3被取出，留下1、2，说明“先进后出”。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stack.pop()</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stack&lt;Int&gt;(array: [1, 2])</span><br></pre></td></tr></table></figure>
-<ul>
-<li>压栈操作是将新元素压入数组的尾部，而不是头部。在数组的头部插入元素是一个很耗时的操作，它的时间复杂度为 O(n)，因为需要将现有元素往后移位为新元素腾出空间。而在尾部插入元素的时间复杂度为 O(1)；无论数组有多少元素，这个操作所消耗的时间都是一个常量。<br>关于栈的有趣知识：每次你调用函数或方法，CPU 都会将函数返回地址压入到运行栈中。当这个函数执行结束的时候，CPU 将返回地址从栈中取出，并据此返回到函数被调用的位置。所以，如果不断地调用太多的函数(例如死递归函数)，就会得到一个所谓的“栈溢出(stack overflow)” 错误，因为 CPU 运行栈没有空间了。</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -205,125 +181,33 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Swift</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">APP</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">栈</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">记账</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">份子钱</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/04/24/Swift实现一个简单的栈/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2018/04/25/Swift实现一个简单的队列及优化/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Swift实现一个简单的队列及优化
-        
-      </div>
-    </a>
   
   
-    <a href="/2018/04/19/小私密/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">小私密 开发记录</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -346,9 +230,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
